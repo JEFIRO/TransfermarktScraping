@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 import java.util.List;
 
+import static com.jefiro.TransfermarktScraping.Models.Clubs.SearchClubPlayer.getPayerClub;
+
 @RestController
 @RequestMapping("/clubs")
 public class ClubsController {
@@ -29,13 +31,18 @@ public class ClubsController {
 
     @GetMapping("/search/clubid")
     public ResponseEntity<?> clubsid(@RequestParam int clubid) throws IOException {
-        var clubs = SearchClubId.searchClubById(clubid);;
+        var clubs = SearchClubId.searchClubById(clubid);
         return ResponseEntity.ok(clubs);
     }
 
     @GetMapping("/search/title")
     public ResponseEntity<?> titleid(@RequestParam int clubid) throws IOException {
         var clubs = SearchClubTitle.getTitles(clubid);;
+        return ResponseEntity.ok(clubs);
+    }
+    @GetMapping("/search/player")
+    public ResponseEntity<?> playerId(@RequestParam int clubid,@RequestParam int saisonid) throws IOException {
+        var clubs = getPayerClub(clubid,saisonid);
         return ResponseEntity.ok(clubs);
     }
 

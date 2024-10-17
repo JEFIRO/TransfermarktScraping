@@ -52,8 +52,8 @@ public class SearchClubTitle {
                 });
             });
         });
-        ClubTitleTrans clubTitleTrans = new ClubTitleTrans(map, elementsClub, allTiltes, _id);
-        return clubTitleTrans;
+
+        return new ClubTitleTrans(map, elementsClub, allTiltes, _id);
     }
 
     public static void main(String[] args) throws IOException {
